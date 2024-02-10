@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ public class CarController : Car
     [SerializeField] GameObject rearViewMirrorCamera = null;
     bool nitrousReady = false;
     [SerializeField] bool raceStarted;
-    float nitrousTimer;
+    [SerializeField] float nitrousTimer;
 
     [System.Serializable]
     public class AxleInfo
@@ -71,8 +72,9 @@ public class CarController : Car
         }
         Quaternion tempRotation = transform.rotation;
         tempRotation.x = 0;
-        tempRotation.y = 0;
+        tempRotation.z = 0;
         transform.rotation = tempRotation;
+        
         if(Input.GetKeyDown(KeyCode.C))
         {
             interiorView.SetActive(!interiorView.activeInHierarchy);
@@ -111,7 +113,7 @@ public class CarController : Car
         if(!nitrousReady && nitrousTimer >= 30.0f)
         {
             nitrousReady = true;
-        } else if (nitrousReady)
+        } else if (!nitrousReady)
         {
             nitrousTimer += Time.deltaTime;
         }
