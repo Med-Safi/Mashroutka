@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UserDataPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] TextMeshProUGUI username = null;
+    [SerializeField] TextMeshProUGUI money = null;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        //username.SetText(GameManager.GetUserName());
+        //money.SetText(GameManager.GetMOneyAsString());
     }
-}
+} 
